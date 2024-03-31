@@ -2,8 +2,10 @@
 
     include('includes/connection.php');
     $querry = "SELECT * FROM setdata";
-    $result = mysqli_query($connection, $querry);
-    $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $statement = $connection->prepare($querry);
+    $statement->execute();
+    
+    $users = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -29,14 +31,14 @@
             <th>Address</th>
             <th>Number</th>
         </tr>
+        <?php foreach ($users as $user): ?>
         <tr>
-            <?php foreach ($users as $user): ?>
             <td><?= $user['name'] ?></td>
             <td><?= $user['password'] ?></td>
             <td><?= $user['address'] ?></td>
             <td><?= $user['number'] ?></td>
-            <?php endforeach; ?>
         </tr>
+        <?php endforeach; ?>
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
