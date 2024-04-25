@@ -1,5 +1,5 @@
 <?php
 
-$connection = new PDO("mysql:host=localhost;dbname=yash","root","");
+$connection = new PDO("mysql:host=localhost;dbname=pdo","root","");
 
 ?>
