@@ -1,7 +1,7 @@
 <?php
 include ('includes/connection.php');
 $id = $_GET["id"];
-$querry = "SELECT * FROM demo";
+$querry = "SELECT * FROM demo WHERE id = $id";
 $statement = $connection->prepare($querry);
 $statement->execute();
 $user = $statement->fetch(PDO::FETCH_ASSOC);
